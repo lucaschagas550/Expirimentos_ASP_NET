@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\file\Accordion expandir tabela.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,3 +1,4 @@
+using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net.Mime;
@@ -64,6 +65,45 @@ namespace TestTabelaResponivaBoostrap.Controllers
             return File(fileBytes,
                 "text/html", //file.ContentType Coluna no banco
                 $"{fileName}.html", true);
+        }
+
+        [HttpGet("GetExcel")]
+        public FileResult GetExcel(int id)
+        {
+            //Instalar a lib ClosedXML
+            // Simulando uma lista de dados para exportar
+            var data = new List<dynamic> {
+                new { Name = "João", Age = 29, Email = "joao@example.com" },
+                new { Name = "Maria", Age = 34, Email = "maria@example.com" }
+            };
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Sample Data");
+                var currentRow = 1;
+                worksheet.Cell(currentRow, 1).Value = "Name";
+                worksheet.Cell(currentRow, 2).Value = "Age";
+                worksheet.Cell(currentRow, 3).Value = "Email";
+
+                foreach (var item in data)
+                {
+                    currentRow++;
+                    worksheet.Cell(currentRow, 1).Value = item.Name;
+                    worksheet.Cell(currentRow, 2).Value = item.Age;
+                    worksheet.Cell(currentRow, 3).Value = item.Email;
+                }
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    stream.Flush();
+
+                    return new FileContentResult(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                    {
+                        FileDownloadName = $"Export_{DateTime.UtcNow.ToString("yyyyMMddHHmmss")}.xlsx" //Nome do arquivo gerado
+                    };
+                }
+            }
         }
 
         public IActionResult Privacy()
