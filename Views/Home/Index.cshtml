@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="table-responsive">
+
+    <table class="table caption-top">
+        <caption>List of users</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First </th>
+                <th scope="col">Last</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>MarkMarkMarkMarkMarkMarkMark</td>
+                <td>OttoOttoOttoOttoOttoOttoOttoOtto</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>JacobJacobJacobJacobJacobJacobJacobJacobJacob</td>
+                <td>ThorntonThorntonThorntonThorntonThorntonThorntonThornton</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>LarryLarryLarryLarryLarryLarryLarryLarry</td>
+                <td>the Birdthe Birdthe Birdthe Birdthe Birdthe Birdthe Birdthe Birdthe Birdthe Birdthe Bird</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+
+    <form asp-action="File" enctype="multipart/form-data" method="post">
+
+        <label for="Arquivo" class="form-label" >Escolha um arquivo</label>
+        <input type="hidden" id="Id" class="form-control" name="id" value="123" />
+        <input type="file" id="Arquivo" class="form-control" name="file" placeholder="Selecione um arquivo" />
+
+        <button type="submit">
+            Enviar
+        </button>
+    </form>
+
+    <form asp-action="Download"  method="post">
+        <input name="fileName" value="test.html" />
+        <button type="submit">
+            Enviar Nome do arquivo
+        </button>
+    </form>
+
+</div>
+
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+        Default radio
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+    <label class="form-check-label" for="flexRadioDefault2">
+        Default checked radio
+    </label>
+</div>

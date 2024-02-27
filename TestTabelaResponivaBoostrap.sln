@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTabelaResponivaBoostrap", "TestTabelaResponivaBoostrap.csproj", "{FA86D2B8-A9BE-4C67-8A23-D5D0CB5D714C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA86D2B8-A9BE-4C67-8A23-D5D0CB5D714C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA86D2B8-A9BE-4C67-8A23-D5D0CB5D714C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA86D2B8-A9BE-4C67-8A23-D5D0CB5D714C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA86D2B8-A9BE-4C67-8A23-D5D0CB5D714C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E49D5E4D-B8FE-4805-A48B-119FBB3561ED}
+	EndGlobalSection
+EndGlobal
