@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net.Mime;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using TestTabelaResponivaBoostrap.Models;
 
 namespace TestTabelaResponivaBoostrap.Controllers
@@ -21,6 +22,19 @@ namespace TestTabelaResponivaBoostrap.Controllers
 
         public IActionResult Index()
         {
+            var pessoa = new Pessoa() { Nome = "test", Cidade = "city" };
+            Response.Cookies.Append("nomeDoCookie", SerializeObjectToJson(pessoa) , new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(1), 
+                IsEssential = true 
+            });
+
+            var cookieResponse = Request.Cookies["nomeDoCookie"];
+            if(cookieResponse is not null)
+            {
+                var pessoaCookie = DeserializeJsonToObject<Pessoa>(cookieResponse);
+            }
+
             return View();
         }
 
@@ -115,6 +129,19 @@ namespace TestTabelaResponivaBoostrap.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        protected string SerializeObjectToJson(object data) =>
+           JsonSerializer.Serialize(data);
+
+        protected T? DeserializeJsonToObject<T>(string responseMessage)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            return JsonSerializer.Deserialize<T>(responseMessage, options);
         }
     }
 }
