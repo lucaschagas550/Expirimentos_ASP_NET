@@ -1,14 +1,14 @@
 using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
+using SmartBreadcrumbs.Attributes;
 using System.Diagnostics;
-using System.Net.Mime;
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
 using TestTabelaResponivaBoostrap.Models;
 
 namespace TestTabelaResponivaBoostrap.Controllers
 {
+    [DefaultBreadcrumb("My home",  FromController = typeof(HomeController), FromAction = "Index", IconClasses = "bi bi-house")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,14 +23,14 @@ namespace TestTabelaResponivaBoostrap.Controllers
         public IActionResult Index()
         {
             var pessoa = new Pessoa() { Nome = "test", Cidade = "city" };
-            Response.Cookies.Append("nomeDoCookie", SerializeObjectToJson(pessoa) , new CookieOptions
+            Response.Cookies.Append("nomeDoCookie", SerializeObjectToJson(pessoa), new CookieOptions
             {
-                Expires = DateTimeOffset.UtcNow.AddDays(1), 
-                IsEssential = true 
+                Expires = DateTimeOffset.UtcNow.AddDays(1),
+                IsEssential = true
             });
 
             var cookieResponse = Request.Cookies["nomeDoCookie"];
-            if(cookieResponse is not null)
+            if (cookieResponse is not null)
             {
                 var pessoaCookie = DeserializeJsonToObject<Pessoa>(cookieResponse);
             }
@@ -120,6 +120,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
             }
         }
 
+        [Breadcrumb(FromAction = "Index", Title = "Privacy")]
         public IActionResult Privacy()
         {
             return View();

@@ -1,7 +1,20 @@
+using SmartBreadcrumbs.Extensions;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
+{
+    options.TagName = "nav";
+    options.TagClasses = "";
+    options.OlClasses = "breadcrumb";
+    options.LiClasses = "breadcrumb-item";
+    options.ActiveLiClasses = "breadcrumb-item active";
+    options.SeparatorElement = "<li class=\" separator \">&nbsp;>&nbsp;</li>";
+});
 
 var app = builder.Build();
 
