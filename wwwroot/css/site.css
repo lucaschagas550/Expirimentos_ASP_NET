@@ -42,3 +42,8 @@ body {
     .breadcrumb .breadcrumb-item a:visited {
         color: seagreen; /* Cor após o link ter sido visitado */
     }
+
+.menuAtivo {
+    background-color: white;
+    border-radius: 10px;
+}
