@@ -42,7 +42,7 @@
 
     <form asp-action="File" enctype="multipart/form-data" method="post">
 
-        <label for="Arquivo" class="form-label" >Escolha um arquivo</label>
+        <label for="Arquivo" class="form-label">Escolha um arquivo</label>
         <input type="hidden" id="Id" class="form-control" name="id" value="123" />
         <input type="file" id="Arquivo" class="form-control" name="file" placeholder="Selecione um arquivo" />
 
@@ -51,7 +51,7 @@
         </button>
     </form>
 
-    <form asp-action="Download"  method="post">
+    <form asp-action="Download" method="post">
         <input name="fileName" value="test.html" />
         <button type="submit">
             Enviar Nome do arquivo
@@ -68,7 +68,7 @@
     </label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
     <label class="form-check-label" for="flexRadioDefault2">
         Default checked radio
     </label>
@@ -77,4 +77,14 @@
 
 <div>
     <a asp-action="GetExcel" asp-route-id="1" class="btn btn-primary">Excel</a>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 text-end">
+        <button class="btn btn-primary">
+            Teste
+        </button>
+    </div>
+
 </div>

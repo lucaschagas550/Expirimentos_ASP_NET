@@ -4,19 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TestTabelaResponivaBoostrap</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TestTabelaResponivaBoostrap.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
-<body>
+
+@{
+    var theme = Context.Request.Cookies[CookieNome.Theme] ?? "light"; // Define o tema padrão como claro
+}
+<body data-bs-theme="@theme">
     @{
         // Obtém o nome do controlador e da ação atual
         var currentController = ViewContext.RouteData.Values["controller"].ToString();
         var currentAction = ViewContext.RouteData.Values["action"].ToString();
     }
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  bg-dark border-bottom box-shadow mb-3" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestTabelaResponivaBoostrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -27,20 +35,20 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link  @(currentAction == "Index" ? "menuAtivo text-dark" : "text-light")"
-                                asp-area="" 
-                                asp-controller="Home" 
-                                asp-action="Index">
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
                                 <i class="fs-4 bi bi-house"></i>
                                 Home
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
                                 Privacy
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Sobre" asp-action="Index">
+                            <a class="nav-link" asp-area="" asp-controller="Sobre" asp-action="Index">
                                 Sobre
                             </a>
                         </li>
@@ -53,6 +61,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <button id="theme-toggle">Tema</button>
         </main>
     </div>
 
@@ -61,8 +70,47 @@
             &copy; 2024 - TestTabelaResponivaBoostrap - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const body = document.body;
+            const themeToggleBtn = document.getElementById('theme-toggle');
+
+            // Função para alterar o tema
+            function toggleTheme() {
+                const currentTheme = body.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                body.setAttribute('data-bs-theme', newTheme);
+                
+                var date = new Date();
+                date.setFullYear(date.getFullYear() + 1);
+                document.cookie = "@CookieNome.Theme=" + newTheme + "; path=/; Secure; expires=" + date.toUTCString();
+            }
+
+            // Função para verificar o cookie e definir o tema
+            function applyThemeFromCookie() {
+                const themeFromCookie = document.cookie.split('; ').find(row => row.startsWith('@CookieNome.Theme=')).split('=')[1];
+                if (themeFromCookie) {
+                    body.setAttribute('data-bs-theme', themeFromCookie);
+                }
+            }
+
+            // Aplicar tema do cookie ao carregar a página
+            try {
+                applyThemeFromCookie();
+            } catch (e) {
+                // Se não encontrar o cookie, o tema padrão já está definido no HTML
+            }
+
+            themeToggleBtn.addEventListener('click', toggleTheme);
+        });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous">
+    </script>
+    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
