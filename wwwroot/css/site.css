@@ -21,27 +21,44 @@ body {
     margin-bottom: 60px;
 }
 
-/* Estilos para os caracteres > nos separadores */
-.breadcrumb .separator {
-    color: red; /* Cor dos separadores */
-    link
+/* Estilização geral do breadcrumb */
+.breadcrumb {
+    display: flex; /* Usa flexbox para alinhamento flexível */
+    align-items: center; /* Centraliza os itens verticalmente */
+    list-style: none; /* Remove estilos de lista padrão */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove a margem padrão */
+    background-color: transparent; /* Define a cor de fundo (ajustável) */
+    font-size: 15px; /* Tamanho de fonte padrão */
+    font-weight: bold;
 }
 
-.breadcrumb .breadcrumb-item a {
-    color: lightgreen; /* Define a cor dos links para verde */
-}
-
-    .breadcrumb .breadcrumb-item a:hover {
-        color: darkgreen; /* Mais escuro ao passar o mouse */
+    .breadcrumb li {
+        display: flex; /* Cada item da lista também é um flex container */
+        align-items: center; /* Centraliza o conteúdo de cada item verticalmente */
     }
 
-    .breadcrumb .breadcrumb-item a:active {
-        color: limegreen; /* Cor quando clicado */
+    .breadcrumb a {
+        color: #0275d8; /* Cor do link. Substitua conforme necessário */
+        text-decoration: none; /* Remove o sublinhado dos links */
+        display: flex; /* Garante que o texto e o ícone estejam alinhados */
+        align-items: center; /* Alinha ícones e texto verticalmente */
     }
 
-    .breadcrumb .breadcrumb-item a:visited {
-        color: seagreen; /* Cor após o link ter sido visitado */
+        .breadcrumb a:hover {
+            text-decoration: underline; /* Sublinha ao passar o mouse */
+        }
+
+    .breadcrumb .separator {
+        color: red; /* Cor do separador, ajuste conforme necessário */
+        font-size: 1rem; /* Tamanho de fonte para o separador */
     }
+
+    .breadcrumb i {
+        margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+        font-size: 1.25rem; /* Tamanho do ícone, ajustável conforme necessário */
+    }
+
 
 .menuAtivo {
     background-color: white;

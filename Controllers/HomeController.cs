@@ -8,7 +8,7 @@ using TestTabelaResponivaBoostrap.Models;
 
 namespace TestTabelaResponivaBoostrap.Controllers
 {
-    [DefaultBreadcrumb("My home",  FromController = typeof(HomeController), FromAction = "Index", IconClasses = "bi bi-house")]
+    [DefaultBreadcrumb("My home",  FromController = typeof(HomeController), FromAction = "Index", IconClasses = "<i class=\"fs-6 bi bi-house\" style=\"color: black;\"></i>")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -1,19 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartBreadcrumbs.Attributes;
-using SmartBreadcrumbs.Nodes;
-using TestTabelaResponivaBoostrap.Models;
 
 namespace TestTabelaResponivaBoostrap.Controllers
 {
-    //[Breadcrumb(Title = "haha")]
     public class SobreController : Controller
     {
         public SobreController()
         {
-            
+
         }
 
-        //[Breadcrumb("Sobre")]
         [Breadcrumb(Title = "haha")]
         public IActionResult Index()
         {
@@ -22,6 +18,12 @@ namespace TestTabelaResponivaBoostrap.Controllers
 
         [Breadcrumb(Title = "123")]
         public IActionResult Teste()
+        {
+            return View();
+        }
+
+        [Breadcrumb(Title = "ok", FromAction = "Teste", FromController = typeof(SobreController))]
+        public IActionResult Teste1()
         {
             return View();
         }

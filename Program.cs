@@ -6,13 +6,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
+//{
+//    options.TagName = "nav";
+//    options.TagClasses = "";
+//    options.OlClasses = "breadcrumb";
+//    options.LiClasses = "breadcrumb-item";
+//    options.ActiveLiClasses = "breadcrumb-item active";
+//    options.SeparatorElement = "<li class=\" separator \">&nbsp;>&nbsp;</li>";
+//});
+
 builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
 {
-    options.TagName = "nav";
+    options.TagName = "";
     options.TagClasses = "";
     options.OlClasses = "breadcrumb";
-    options.LiClasses = "breadcrumb-item";
+    options.LiClasses = "";
     options.ActiveLiClasses = "breadcrumb-item active";
+    options.LiTemplate = "<li><a href=\"{1}\">{2}{0}</a></li>";
+    options.ActiveLiTemplate = "<li class=\"breadcrumb-item active\">{2}{0}</li>";
     options.SeparatorElement = "<li class=\" separator \">&nbsp;>&nbsp;</li>";
 });
 
