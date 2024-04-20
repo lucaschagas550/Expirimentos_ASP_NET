@@ -15,18 +15,26 @@ builder.Services.AddControllersWithViews();
 //    options.ActiveLiClasses = "breadcrumb-item active";
 //    options.SeparatorElement = "<li class=\" separator \">&nbsp;>&nbsp;</li>";
 //});
-
-builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
+try
 {
-    options.TagName = "";
-    options.TagClasses = "";
-    options.OlClasses = "breadcrumb";
-    options.LiClasses = "";
-    options.ActiveLiClasses = "breadcrumb-item active";
-    options.LiTemplate = "<li><a href=\"{1}\">{2}{0}</a></li>";
-    options.ActiveLiTemplate = "<li class=\"breadcrumb-item active\">{2}{0}</li>";
-    options.SeparatorElement = "<li class=\" separator \">&nbsp;>&nbsp;</li>";
-});
+    builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
+    {
+        options.TagName = "";
+        options.TagClasses = "";
+        options.OlClasses = "breadcrumb";
+        options.LiClasses = "";
+        options.ActiveLiClasses = "breadcrumb-item active";
+        options.LiTemplate = "<li><a href=\"{1}\">{2}{0}</a></li>";
+        options.ActiveLiTemplate = "<li class=\"breadcrumb-item active\">{2}{0}</li>";
+        options.SeparatorElement = "<li class=\" separator \">&nbsp;>&nbsp;</li>";
+        options.DontLookForDefaultNode = true;
+    });
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex);
+}
+
 
 var app = builder.Build();
 

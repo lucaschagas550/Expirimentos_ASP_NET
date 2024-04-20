@@ -8,7 +8,7 @@ using TestTabelaResponivaBoostrap.Models;
 
 namespace TestTabelaResponivaBoostrap.Controllers
 {
-    [DefaultBreadcrumb("My home",  FromController = typeof(HomeController), FromAction = "Index", IconClasses = "<i class=\"fs-6 bi bi-house\" style=\"color: black;\"></i>")]
+    //[DefaultBreadcrumb("My home",  FromController = typeof(HomeController), FromAction = "Index", IconClasses = "<i class=\"fs-6 bi bi-house\" style=\"color: black;\"></i>")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,6 +20,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        [DefaultBreadcrumb("My home", IconClasses = "<i class=\"fs-6 bi bi-house\" style=\"color: black;\"></i>")]
         public IActionResult Index()
         {
             var pessoa = new Pessoa() { Nome = "test", Cidade = "city" };
@@ -120,7 +121,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
             }
         }
 
-        [Breadcrumb(FromAction = "Index", Title = "Privacy")]
+        //[Breadcrumb(FromAction = "Index", Title = "Privacy")]
         public IActionResult Privacy()
         {
             return View();

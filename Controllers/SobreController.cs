@@ -10,7 +10,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
 
         }
 
-        [Breadcrumb(Title = "haha")]
+        [Breadcrumb(Title = "Sobre")]
         public IActionResult Index()
         {
             return View();
@@ -26,6 +26,11 @@ namespace TestTabelaResponivaBoostrap.Controllers
         public IActionResult Teste1()
         {
             return View();
+        }
+
+        public IActionResult RedirectToInfo()
+        {
+            return RedirectToAction("Index", "Info");
         }
     }
 }
