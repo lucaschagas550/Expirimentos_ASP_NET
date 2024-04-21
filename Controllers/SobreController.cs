@@ -22,9 +22,11 @@ namespace TestTabelaResponivaBoostrap.Controllers
             return View();
         }
 
-        [Breadcrumb(Title = "ok", FromAction = "Teste", FromController = typeof(SobreController))]
+        //Obter valor da ViewData podendo ser um nome de um produto por exemplo da paginal final do breadcrump
+        [Breadcrumb("ViewData.Breadcrumb", FromAction = "Teste", FromController = typeof(SobreController))]
         public IActionResult Teste1()
         {
+            ViewData["Breadcrumb"] = "Action 1";
             return View();
         }
 
