@@ -89,6 +89,8 @@
                 var date = new Date();
                 date.setFullYear(date.getFullYear() + 1);
                 document.cookie = "@CookieNome.Theme=" + newTheme + "; path=/; Secure; expires=" + date.toUTCString();
+
+                location.reload();
             }
 
             // Função para verificar o cookie e definir o tema
