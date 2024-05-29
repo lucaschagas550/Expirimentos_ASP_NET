@@ -1,5 +1,6 @@
 using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartBreadcrumbs.Attributes;
 using System.Diagnostics;
 using System.Reflection;
@@ -35,6 +36,17 @@ namespace TestTabelaResponivaBoostrap.Controllers
             {
                 var pessoaCookie = DeserializeJsonToObject<Pessoa>(cookieResponse);
             }
+
+            var pessoas = new List<Pessoa>() { 
+                new Pessoa("test 1", "test 1"),
+                new Pessoa("test 2", "test 2"),
+                new Pessoa("test 3", "test 3"),
+            };
+
+            ViewBag.Paises = new SelectList(pessoas,
+                "Nome",
+                "Cidade");
+                
 
             return View();
         }
@@ -131,6 +143,20 @@ namespace TestTabelaResponivaBoostrap.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult ReceiveSelectedCountries(List<string> selectedCountries)
+        {
+            // Process the selected countries
+            // For example, you can log them or perform some business logic
+            foreach (var country in selectedCountries)
+            {
+                // Do something with each country
+            }
+
+            // Return a view or a JSON response
+            return View();
         }
 
         protected string SerializeObjectToJson(object data) =>

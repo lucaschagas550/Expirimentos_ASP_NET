@@ -131,3 +131,34 @@
         </tr>
     </tbody>
 </table>
+
+
+
+
+<form asp-controller="Home" asp-action="ReceiveSelectedCountries" method="post">
+    <div class="form-group">
+        <label for="multiple-select-clear-field">Select Countries</label>
+        <select class="form-select"
+                id="multiple-select-clear-field"
+                asp-items="@ViewBag.Paises"
+                name="selectedCountries"
+                data-placeholder="Choose anything"
+                multiple>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-5">Submit</button>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#multiple-select-clear-field').select2({
+                theme: "bootstrap-5",
+                width: '100%',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: false,
+                allowClear: true
+            });
+        });
+    </script>
+}
