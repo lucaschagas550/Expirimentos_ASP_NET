@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text.Json;
 using TestTabelaResponivaBoostrap.Models;
+using TestTabelaResponivaBoostrap.Models.Enums;
+using TestTabelaResponivaBoostrap.Utils;
 
 namespace TestTabelaResponivaBoostrap.Controllers
 {
@@ -46,7 +48,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
             ViewBag.Paises = new SelectList(pessoas,
                 "Nome",
                 "Cidade");
-                
+
+            CriarViewBag();
 
             return View();
         }
@@ -159,6 +162,17 @@ namespace TestTabelaResponivaBoostrap.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult RecebeDiaSemana(EDiasSemana diasSemana)
+        {
+            if(diasSemana == 0)
+            {
+                Console.WriteLine($"Dia semana eh {diasSemana}");
+            }
+
+            return View();
+        }
+
         protected string SerializeObjectToJson(object data) =>
            JsonSerializer.Serialize(data);
 
@@ -170,6 +184,19 @@ namespace TestTabelaResponivaBoostrap.Controllers
             };
 
             return JsonSerializer.Deserialize<T>(responseMessage, options);
+        }
+
+        private void CriarViewBag()
+        {
+            ViewBag.DiasSemana = new SelectList(
+            Enum.GetValues(typeof(EDiasSemana))
+                .Cast<EDiasSemana>()
+                .Where(d => d != EDiasSemana.NenhumItemSelecionado)
+                .Select(e => new SelectListItem
+                {
+                    Value = e.ToString(),
+                    Text = EnumHelper<EDiasSemana>.GetDisplayValue(e)
+                }), "Value", "Text");
         }
     }
 }

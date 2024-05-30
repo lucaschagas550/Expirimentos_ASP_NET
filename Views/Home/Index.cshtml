@@ -133,20 +133,31 @@
 </table>
 
 
+<form asp-controller="Home" asp-action="RecebeDiaSemana" method="post">
+    <div class="form-group mt-5">
+        <label for="multiple-select-clear-field">Selecione Dia da Semana</label>
+        <select class="form-select"
+                asp-items="@ViewBag.DiasSemana"
+                name="selectedCountries">
+            <option value="0"> ---- SELECIONAR ---- </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-5">Enviar dia Semana</button>
+</form>
 
 
+ @* data-placeholder="Choose anything" *@
 <form asp-controller="Home" asp-action="ReceiveSelectedCountries" method="post">
-    <div class="form-group">
+    <div class="form-group mt-5">
         <label for="multiple-select-clear-field">Select Countries</label>
         <select class="form-select"
                 id="multiple-select-clear-field"
                 asp-items="@ViewBag.Paises"
                 name="selectedCountries"
-                data-placeholder="Choose anything"
                 multiple>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary mt-5">Submit</button>
+    <button type="submit" class="btn btn-primary mt-5">Enviar Lista de Paises</button>
 </form>
 
 @section Scripts {

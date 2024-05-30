@@ -10,7 +10,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
 
         }
 
-        [Breadcrumb(Title = "Sobre")]
+        [Breadcrumb(Title = "Sobre", IconClasses = "<i class=\"fs-6 bi bi-house\" style=\"color: black;\"></i>")]
         public IActionResult Index()
         {
             return View();
