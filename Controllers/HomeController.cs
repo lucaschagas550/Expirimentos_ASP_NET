@@ -163,6 +163,18 @@ namespace TestTabelaResponivaBoostrap.Controllers
         }
 
         [HttpPost]
+        public IActionResult ValidarModelStateSelectList(Mes mes)
+        {
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine($"Dia semana eh {mes}");
+                return View("Index");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult RecebeDiaSemana(EDiasSemana diasSemana)
         {
             if(diasSemana == 0)

@@ -133,6 +133,18 @@
 </table>
 
 
+<form asp-controller="Home" asp-action="ValidarModelStateSelectList" method="post">
+    <div class="form-group mt-5">
+        <label for="multiple-select-clear-field">Selecione Dia da Semana para validar ModelState</label>
+        <select class="form-select"
+                asp-items="@ViewBag.DiasSemana"
+                name="DiasSemana">
+            <option value="0"> ---- SELECIONAR ---- </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-5">Enviar dia Semana para validar ModelState</button>
+</form>
+
 <form asp-controller="Home" asp-action="RecebeDiaSemana" method="post">
     <div class="form-group mt-5">
         <label for="multiple-select-clear-field">Selecione Dia da Semana</label>
