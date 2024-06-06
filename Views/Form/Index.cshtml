@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Form";
+}
+
+
+@* <form asp-controller="Home" asp-action="RegistrarUsuario" method="post" id="formSubmit" novalidate
+      onsubmit="validarFormulario(event, [
+											{ id: 'nome', errorMsg: 'Preencha o campo com um nome válido' },
+											{ id: 'email', errorMsg: 'Preencha o campo com um e-mail válido.' },
+											{ id: 'cpf', errorMsg: 'Preencha o campo com um cpf válido.' },
+											{ id: 'telefone', errorMsg: 'Preencha o campo com um telefone válido.' },
+											{ id: 'selectPerfil', errorMsg: 'Selecione um item da lista.' },
+											{ id: 'selectSecretaria', errorMsg: 'Selecione um item da lista.' },
+											{ id: 'selectEntidade', errorMsg: 'Selecione um item da lista.' }
+										])"> *@
+
+<form asp-action="Index"
+      method="post"
+      id="formSubmit"
+      novalidate
+      onsubmit="validarFormulario(event,
+      [
+           { id: 'email', errorMsg: 'Preencha o campo com um e-mail válido.' },
+           { id: 'price', errorMsg: 'Preencha o campo com um price válido.', type:'price' }
+      ])">
+
+    <div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="email"
+                       class="form-label">
+                    Email address
+                </label>
+                <input id="email"
+                       class="form-control"
+                       name="email"
+                       placeholder="name@example.com"
+                       type="email"
+                       minlength="10"
+                       required>
+                <div class="invalid-feedback">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="price"
+                       class="form-label">
+                    Price
+                </label>
+                <input id="price"
+                       class="form-control money"
+                       name="price"
+                       placeholder="0,00"
+                       min="0.01"
+                       required>
+                <div class="invalid-feedback">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="mb-2">
+                    <label class="form-check-label">
+                        Receive email?
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="flexRadioDefault"
+                           value="True"
+                           id="option1">
+                    <label class="form-check-label"
+                           for="option1">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="flexRadioDefault"
+                           value="False"
+                           id="option2">
+                    <label class="form-check-label"
+                           for="option2">
+                        No
+                    </label>
+                </div>
+                <div class="invalid-feedback" id="checkbox-error">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row mt-5 mb-5">
+            <div class="col-md-6 text-end">
+                <button class="btn btn-secondary">
+                    Cancelar
+                </button>
+            </div>
+
+            <div class="col-md-6 text-start">
+                <button class="btn btn-primary">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
