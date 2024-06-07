@@ -21,7 +21,8 @@
       onsubmit="validarFormulario(event,
       [
            { id: 'email', errorMsg: 'Preencha o campo com um e-mail válido.' },
-           { id: 'price', errorMsg: 'Preencha o campo com um price válido.', type:'price' }
+           { id: 'price', errorMsg: 'Preencha o campo com um price válido.', type:'price' },
+           { id: 'dataId', errorMsg: 'Preencha o campo com uma data válida.' }
       ])">
 
     <div>
@@ -60,7 +61,7 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="mb-2">
                     <label class="form-check-label">
                         Receive email?
@@ -91,9 +92,27 @@
                 <div class="invalid-feedback" id="checkbox-error">
                 </div>
             </div>
+
+
+            <div class="col-md-6">
+                <label class="form-label"
+                       for="dataId">
+                    Data
+                </label>
+                <input class="form-control"
+                       type="date"
+                       name="data"
+                       id="dataId"
+                       autocomplete="off"
+                       role="presentation"
+                       title="data"
+                       value=""
+                       min="2024-06-01"
+                       required/>
+                <div class="invalid-feedback">
+                </div>
+            </div>
         </div>
-
-
 
         <div class="row mt-5 mb-5">
             <div class="col-md-6 text-end">
@@ -110,3 +129,5 @@
         </div>
     </div>
 </form>
+
+

@@ -20,7 +20,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
 
         //Testar com data e boolean
         [HttpPost]
-        public IActionResult Index(string email, double price, bool flexRadioDefault)
+        public IActionResult Index(string email, double price, bool flexRadioDefault, DateTime data)
         {
             return View();
         }
