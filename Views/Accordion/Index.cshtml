@@ -95,16 +95,13 @@
                 var firstAccordionButton = document.querySelector("[data-bs-target='#collapseOne" + primeiroAccordionId.replace('pessoa1', '') + "']");
                 if (firstAccordionButton) {
                     firstAccordionButton.click();
-                    console.log('primeiro botao');
                 }
             }
 
             if (segundoAccordionId) {
                 var secondAccordionButton = document.querySelector("[data-bs-target='#collapseTwo" + segundoAccordionId.replace('pessoa2', '') + "']");
                 if (secondAccordionButton) {
-                    console.log('segundo botao');
                     secondAccordionButton.click();
-                    secondAccordionButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
         });
