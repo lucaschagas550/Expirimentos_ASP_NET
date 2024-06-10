@@ -2,8 +2,10 @@
 {
     public class Pessoa
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cidade { get; set; }
+
         public Pessoa()
         {
             
@@ -13,6 +15,13 @@
         {
             Nome = nome;
             Cidade = cidade;
+        }
+
+        public Pessoa(int id, string nome, string cidade)
+        {
+            Id=id;
+            Nome=nome;
+            Cidade=cidade;
         }
     }
 }
