@@ -124,9 +124,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="name"
-                           class="form-label"
-                           Name
-                </label>
+                           class="form-label">
+                        Name
+                    </label>
                     <input id="name"
                            class="form-control"
                            name="name"
@@ -192,6 +192,78 @@
                     <button class="btn btn-primary" type="submit">
                         Salvar
                     </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="mt-5">
+    <!-- Button trigger modal -->
+    <button type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#chamarModal">
+        Chamar a model
+    </button>
+
+    <!-- Modal -->
+    <form asp-action="Index"
+          method="post"
+          id="testform3"
+          onsubmit="validateForm(event, 'testform3')"
+          novalidate>
+        <div class="modal fade"
+             id="chamarModal"
+             tabindex="-1"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5"
+                            id="exampleModalLabel">
+                            Form in Modal
+                        </h1>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="modalEmail"
+                                       class="form-label">
+                                    Email address
+                                </label>
+                                <input id="modalEmail"
+                                       class="form-control"
+                                       name="email"
+                                       placeholder="name@example.com"
+                                       type="email"
+                                       minlength="10"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Preencha o campo com um e-mail válido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
