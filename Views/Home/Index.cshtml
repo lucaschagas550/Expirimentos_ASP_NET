@@ -189,9 +189,45 @@
     </form>
 </div>
 
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#countryModal">
+    Abrir Modal
+</button>
+
+<div class="modal fade" id="countryModal" aria-labelledby="countryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="countryModalLabel">Select Country</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Home" asp-action="ReceiveSelectedCountries" method="post">
+                    <div class="form-group">
+                        <label for="test">Select Countries Single Select</label>
+                        <select class="form-select"
+                                id="test"
+                                data-placeholder="Selecione"
+                                asp-items="@ViewBag.Paises"
+                                name="selectedCountries">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Enviar Um Pais</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
         $(document).ready(function () {
+            $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+
             $('#multiple-select-clear-field').select2({
                 theme: "bootstrap-5",
                 width: '100%',
@@ -205,6 +241,15 @@
                 width: '100%',
                 placeholder: $(this).data('placeholder'),
                 closeOnSelect: true, //Fecha ao selecionar o item
+                allowClear: true
+            });
+
+            $("#test").select2({
+                dropdownParent: $("#countryModal"),
+                theme: "bootstrap-5",
+                width: '100%',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: true, // Close on select
                 allowClear: true
             });
         });
