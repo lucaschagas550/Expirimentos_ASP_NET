@@ -1,0 +1,50 @@
+﻿@model Aluno
+
+<!-- Modal -->
+<div class="modal fade" id="@Html.Raw("editar" + Model.Id)" tabindex="-1" aria-labelledby="exampleModalLabel-@Model.Id" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel-@Model.Id">@Html.DisplayFor(modelItem => Model.Nome)</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Update" method="post" id="formEditarAluno-@Model.Id">
+                <div class="modal-body">
+
+                    <input type="hidden" asp-for="@Model.Id" />
+
+                    <div class="form-group mb-3">
+                        <label asp-for="@Model.Nome" class="control-label"></label>
+                        <input asp-for="@Model.Nome" class="form-control" />
+                        <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="@Model.DataNascimento" class="control-label"></label>
+                        <input asp-for="@Model.DataNascimento" type="date" class="form-control" />
+                        <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="@Model.Email" class="control-label" ></label>
+                        <input asp-for="@Model.Email" class="form-control" />
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="@Model.Avaliacao" class="control-label" ></label>
+                        <input asp-for="@Model.Avaliacao" class="form-control"/>
+                        <span asp-validation-for="@Model.Avaliacao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check mt-3">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="@Model.Ativo"/>
+                            @Html.DisplayNameFor(model => model.Ativo)
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Enviar" class="btn btn-info" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -158,10 +158,10 @@
 </form>
 
 
- @* data-placeholder="Choose anything" *@
+@* data-placeholder="Choose anything" *@
 <form asp-controller="Home" asp-action="ReceiveSelectedCountries" method="post">
     <div class="form-group mt-5">
-        <label for="multiple-select-clear-field">Select Countries</label>
+        <label for="multiple-select-clear-field">Select Countries Multi Select</label>
         <select class="form-select"
                 id="multiple-select-clear-field"
                 asp-items="@ViewBag.Paises"
@@ -172,6 +172,23 @@
     <button type="submit" class="btn btn-primary mt-5">Enviar Lista de Paises</button>
 </form>
 
+<!--Single select-->
+<div class="mt-5 mb-5">
+    <form asp-controller="Home" asp-action="ReceiveSelectedCountries" method="post">
+        <div class="form-group mt-5">
+            <label for="multiple-select-clear-field">Select Countries Single Select</label>
+            <select class="form-select"
+                    id="single-select-field"
+                    data-placeholder="Selecione"
+                    asp-items="@ViewBag.Paises"
+                    name="selectedCountries">
+                <option value=""></option>
+            </select>
+            <button type="submit" class="btn btn-primary mt-5">Enviar Um Pais</button>
+        </div>
+    </form>
+</div>
+
 @section Scripts {
     <script>
         $(document).ready(function () {
@@ -180,6 +197,14 @@
                 width: '100%',
                 placeholder: $(this).data('placeholder'),
                 closeOnSelect: false,
+                allowClear: true
+            });
+
+            $('#single-select-field').select2({
+                theme: "bootstrap-5",
+                width: '100%',
+                placeholder: $(this).data('placeholder'),
+                closeOnSelect: true, //Fecha ao selecionar o item
                 allowClear: true
             });
         });

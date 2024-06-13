@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Aluno>
+
+@{
+    ViewData["Title"] = "DataAnnotation";
+    var novoAluno = new Aluno();
+}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adicionar">
+    Adicionar
+</button>
+
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Avaliacao)</th>
+                <th>@Html.DisplayNameFor(model => model.Ativo)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Avaliacao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ativo)</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@Html.Raw("#editar" + item.Id)">Editar</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir"+ item.Id)">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!--Os formularios devem estar sempre na raiz do html, nunca dentro de algo, que pode ser que as validacoes nao funcionem-->
+<!--O Mesmo vale para a validacao do boostrap, ele nao se encotra dentro por exemplo de tbody da tabela, igual o do jquery.validate.unobtrusive-->
+<div>
+    @foreach (var item in Model)
+    {
+        <!--A partial view nao eh obrigatoria, poderia ser aqui dentro deste foreach a modal-->
+        <partial name="_UpdatePartial" model="@item" />
+    }
+</div>
+
+<div>
+    <partial name="_CreatePartial" model="novoAluno" />
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
