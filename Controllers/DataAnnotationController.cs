@@ -30,6 +30,10 @@ namespace TestTabelaResponivaBoostrap.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,Nome,DataNascimento,Email,EmailConfirmacao,Avaliacao,Ativo")] Aluno aluno)
         {
+            //Da para deixar campo nome hidden e o JS nao ira validar, mas tem que remover da modal state
+            ModelState.Remove(nameof(Aluno.Nome));
+            ModelState.Remove("EmailConfirmacao");
+
             if (ModelState.IsValid)
                 return RedirectToAction(nameof(Index));
 

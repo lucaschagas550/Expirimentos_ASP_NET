@@ -12,9 +12,10 @@
                 <div class="modal-body">
 
                     <div class="form-group mb-3">
-                        <label asp-for="@Model.Nome" class="control-label"></label>
-                        <input asp-for="@Model.Nome" class="form-control" />
-                        <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+                        <!--Campo hidden o JS nao valida-->
+                        <label asp-for="@Model.Nome" class="control-label" hidden></label>
+                        <input asp-for="@Model.Nome" class="form-control" hidden />
+                        <span asp-validation-for="@Model.Nome" class="text-danger" ></span>
                     </div>
                     <div class="form-group mt-3">
                         <label asp-for="@Model.DataNascimento" class="control-label"></label>
@@ -39,7 +40,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limparValoresFormulario('formAdicionarAluno')">Close</button>
                     <button type="submit" class="btn btn-info">Enviar</button>
                 </div>
             </form>

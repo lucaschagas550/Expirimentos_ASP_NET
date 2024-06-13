@@ -3,6 +3,29 @@
 
 // Write your JavaScript code.
 
+//Limpa valores do formulario para deixar no estado original, sem estiver vazio fica vazio, se tiver valor volta o valor original
+function limparValoresFormulario(formId) {
+    console.log(formId);
+
+    // Encontre o formulário pelo ID
+    var $form = $('#' + formId);
+
+    // Redefinir todos os campos do formulário
+    if ($form.length) {
+        $form[0].reset();
+
+        // Remover mensagens de erro
+        $form.find('.text-danger').each(function () {
+            $(this).text('');
+        });
+
+        // Remover classes de erro dos campos
+        $form.find('.input-validation-error').each(function () {
+            $(this).removeClass('input-validation-error');
+        });
+    }
+}
+
 //Funcao JS padrao do Boostrap para validar Forms, com duas melhoria, uma para nao validar campos hidden e receber o id do form como parametro assim valida 2 form na mesma tela
 function validateForm(event, formId) {
     'use strict';
