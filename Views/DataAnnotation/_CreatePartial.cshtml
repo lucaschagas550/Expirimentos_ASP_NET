@@ -39,6 +39,8 @@
                         </label>
                     </div>
                 </div>
+                <!--o evento de preventDefault evita que o formulario seja enviado onclick="event.preventDefault();"-->
+                <!--Interessante usar quando tem uma modal que chama outra modal, pq o botao da primeira ao ser clicado ja envia o form, com isso podemos evitar o envio e so enviar na segunda modal-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limparValoresFormulario('formAdicionarAluno')">Close</button>
                     <button type="submit" class="btn btn-info">Enviar</button>

@@ -9,6 +9,10 @@
     Adicionar
 </button>
 
+<div>
+    <partial name="_CreatePartial" model="novoAluno" />
+</div>
+
 <div class="table-responsive mt-3">
     <table class="table">
         <thead>
@@ -48,10 +52,6 @@
         <!--A partial view nao eh obrigatoria, poderia ser aqui dentro deste foreach a modal-->
         <partial name="_UpdatePartial" model="@item" />
     }
-</div>
-
-<div>
-    <partial name="_CreatePartial" model="novoAluno" />
 </div>
 
 @section Scripts {
