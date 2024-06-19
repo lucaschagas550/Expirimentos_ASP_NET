@@ -76,7 +76,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Email = "joao.silva@example.com",
                 EmailConfirmacao = "joao.silva@example.com",
                 Avaliacao = 4,
-                Ativo = true
+                Ativo = true,
+                Saldo = 10555.50m
             },
             new Aluno
             {
@@ -86,7 +87,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Email = "maria.souza@example.com",
                 EmailConfirmacao = "maria.souza@example.com",
                 Avaliacao = 5,
-                Ativo = true
+                Ativo = true,
+                Saldo = 1500.00m
             },
             new Aluno
             {
@@ -96,7 +98,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Email = "carlos.pereira@example.com",
                 EmailConfirmacao = "carlos.pereira@example.com",
                 Avaliacao = 3,
-                Ativo = true
+                Ativo = true,
+                Saldo = 100000.00m
             },
             new Aluno
             {
@@ -106,7 +109,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Email = "ana.lima@example.com",
                 EmailConfirmacao = "ana.lima@example.com",
                 Avaliacao = 4,
-                Ativo = true
+                Ativo = true,
+                Saldo = 50300.00m
             },
             new Aluno
             {
@@ -116,7 +120,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Email = "pedro.albuquerque@example.com",
                 EmailConfirmacao = "pedro.albuquerque@example.com",
                 Avaliacao = 2,
-                Ativo = true
+                Ativo = true,
+                Saldo = 50000.00m
             },
             new Aluno
             {
@@ -126,7 +131,8 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Email = "mariana.santos@example.com",
                 EmailConfirmacao = "mariana.santos@example.com",
                 Avaliacao = 5,
-                Ativo = true
+                Ativo = true,
+                Saldo = 50000.00m
             }
         };
 

@@ -1,9 +1,31 @@
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using SmartBreadcrumbs.Extensions;
+using System.Globalization;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//A principio definir a culture para toda aplicao nao influencia no valor de exibicao e envio
+//builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+//builder.Services.Configure<RequestLocalizationOptions>(options =>
+//{
+//    var supportedCultures = new List<CultureInfo>
+//        {
+//            new CultureInfo("pt-BR")
+//        };
+
+//    options.DefaultRequestCulture = new RequestCulture("pt-BR");
+//    options.SupportedCultures = supportedCultures;
+//    options.SupportedUICultures = supportedCultures;
+//});
+
 // Add services to the container.
+//builder.Services.AddControllersWithViews()
+//    .AddDataAnnotationsLocalization();
+
 builder.Services.AddControllersWithViews();
 
 //builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
@@ -45,6 +67,17 @@ builder.Services.AddSession(options =>
 
 
 var app = builder.Build();
+
+//A principio definir a culture para toda aplicao nao influencia no valor de exibicao e envio
+//var supportedCultures = new[] { new CultureInfo("pt-BR") };
+//var localizationOptions = new RequestLocalizationOptions
+//{
+//    DefaultRequestCulture = new RequestCulture("pt-BR"),
+//    SupportedCultures = supportedCultures,
+//    SupportedUICultures = supportedCultures
+//};
+
+//app.UseRequestLocalization(localizationOptions);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

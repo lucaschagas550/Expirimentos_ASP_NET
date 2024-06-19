@@ -32,6 +32,8 @@ namespace TestTabelaResponivaBoostrap.Models
         [Range(1, 5, ErrorMessage = "O campo {0} deve estar entre {1} e {2}")]
         public int Avaliacao { get; set; }
 
+        public decimal Saldo{ get; set; }
+
         public bool Ativo { get; set; }
     }
 }

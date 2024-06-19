@@ -22,6 +22,7 @@
                 <th>@Html.DisplayNameFor(model => model.Email)</th>
                 <th>@Html.DisplayNameFor(model => model.Avaliacao)</th>
                 <th>@Html.DisplayNameFor(model => model.Ativo)</th>
+                <th>@Html.DisplayNameFor(model => model.Saldo)</th>
                 <th></th>
             </tr>
         </thead>
@@ -34,6 +35,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Email)</td>
                     <td>@Html.DisplayFor(modelItem => item.Avaliacao)</td>
                     <td>@Html.DisplayFor(modelItem => item.Ativo)</td>
+                    <td class="money">@Html.DisplayFor(modelItem => item.Saldo)</td>
                     <td>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@Html.Raw("#editar" + item.Id)">Editar</button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir"+ item.Id)">Excluir</button>
