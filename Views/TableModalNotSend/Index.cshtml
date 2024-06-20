@@ -1,0 +1,183 @@
+﻿@model AlunoCidadeDto
+
+@{
+    ViewData["Title"] = "DataAnnotation";
+    var aluno = new Aluno();
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adicionarModal">
+    Adicionar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="adicionarModal" tabindex="-1" aria-labelledby="adicionarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adicionarModalLabel">Adicionar Aluno</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="adicionarAlunoForm" asp-action="Create2">
+                    <div class="mb-3">
+                        <label asp-for="@aluno.Nome" class="control-label">Nome</label>
+                        <input asp-for="@aluno.Nome" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="@aluno.DataNascimento" class="control-label">Data de Nascimento</label>
+                        <input asp-for="@aluno.DataNascimento" type="date" class="form-control" id="dataNascimento">
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="@aluno.Email" class="control-label">Email</label>
+                        <input asp-for="@aluno.Email" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="@aluno.Avaliacao" class="control-label">Avaliacao</label>
+                        <input asp-for="@aluno.Avaliacao" class="form-control" id="avaliacao">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ativo" class="form-label">Ativo</label>
+                        <select asp-for="@aluno.Ativo" class="form-control" id="ativo">
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="@aluno.Saldo" class="control-label">Saldo</label>
+                        <input asp-for="@aluno.Saldo" class="form-control" id="saldo">
+                    </div>
+                    <button type="submit" class="btn btn-primary" @* onclick="SaveStudent();" *@>Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Aluno.First().Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Aluno.First().DataNascimento)</th>
+                <th>@Html.DisplayNameFor(model => model.Aluno.First().Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Aluno.First().Avaliacao)</th>
+                <th>@Html.DisplayNameFor(model => model.Aluno.First().Ativo)</th>
+                <th>@Html.DisplayNameFor(model => model.Aluno.First().Saldo)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Aluno)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Avaliacao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ativo)</td>
+                    <td class="money">@Html.DisplayFor(modelItem => item.Saldo)</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@Html.Raw("#editar" + item.Id)">Editar</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir"+ item.Id)">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Botão de enviar dados -->
+<form id="enviarDadosForm" method="post" asp-action="Create">
+    <input type="hidden" id="alunosJson" name="alunosJson" />
+    <button type="submit" class="btn btn-success">Enviar Dados</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // document.getElementById('adicionarAlunoForm').addEventListener('submit', function (event) {
+        //     event.preventDefault(); // Impede o envio do formulário
+
+        //     // Obtenha os valores dos campos do formulário
+        //     var nome = document.getElementById('nome').value;
+        //     var dataNascimento = document.getElementById('dataNascimento').value;
+        //     var email = document.getElementById('email').value;
+        //     var avaliacao = document.getElementById('avaliacao').value;
+        //     var ativo = document.getElementById('ativo').value;
+        //     var saldo = document.getElementById('saldo').value;
+
+        //     // Adicione uma nova linha na tabela
+        //     var table = document.querySelector('.table tbody');
+        //     var newRow = document.createElement('tr');
+
+        //     newRow.innerHTML = `
+        //                     <td>${nome}</td>
+        //                     <td>${dataNascimento}</td>
+        //                     <td>${email}</td>
+        //                     <td>${avaliacao}</td>
+        //                     <td>${ativo === "true" ? "Sim" : "Não"}</td>
+        //                     <td class="money">${saldo}</td>
+        //                     <td>
+        //                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</button>
+        //                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#excluirModal">Excluir</button>
+        //                     </td>
+        //                 `;
+
+        //     table.appendChild(newRow);
+
+        //     // Adicionar aluno ao array para envio posterior
+        //     var alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+        //     alunos.push({ nome, dataNascimento, email, avaliacao, ativo, saldo });
+        //     localStorage.setItem('alunos', JSON.stringify(alunos));
+
+        //     // Feche o modal
+        //     var modal = bootstrap.Modal.getInstance(document.getElementById('adicionarModal'));
+        //     modal.hide();
+
+        //     // Limpe o formulário
+        //     event.target.reset();
+        // });
+
+        // document.getElementById('enviarDadosForm').addEventListener('submit', function (event) {
+        //     var alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+        //     var alunoCidadeDto = {
+        //         Aluno: alunos.map(a => ({
+        //             Nome: a.nome,
+        //             DataNascimento: a.dataNascimento,
+        //             Email: a.email,
+        //             Avaliacao: a.avaliacao,
+        //             Ativo: a.ativo,
+        //             Saldo: a.saldo
+        //         })),
+        //         Endereco: {} // Adicione os campos de Endereco conforme necessário
+        //     };
+        //     console.log(alunoCidadeDto);
+        //     document.getElementById('alunosJson').value = JSON.stringify(alunoCidadeDto);
+        // });
+
+
+        function SaveStudent() {
+            if ($("#adicionarAlunoForm").valid()) {
+                var formData = $("#adicionarAlunoForm").serialize();
+                console.log(formData);
+                $.ajax({
+                    url: "/TableModalNotSend/Create2",
+                    type: "POST",
+                    data: formData,
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (request, status, error) {
+                        alert(request.responseText);
+                    }
+                });
+            }
+        }
+    </script>
+}
