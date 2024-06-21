@@ -64,3 +64,16 @@ body {
     background-color: white;
     border-radius: 10px;
 }
+
+.swal2-title {
+    background-color: yellow;
+    display: inline-block;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    text-align: left; /* Alinhar o texto à esquerda */
+    width: 100%; /* Certificar que ocupa toda a largura */
+}
+
+.swal2-html-container {
+    text-align: left !important; /* Alinhar o texto à esquerda */
+}

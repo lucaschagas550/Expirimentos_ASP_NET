@@ -60,4 +60,48 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+    <script>
+
+        function confirmSubmit(event) {
+            event.preventDefault();
+
+            console.log('chamou a funcao');
+            const form = event.target;
+            console.log(form);
+
+            // Aguarda um pequeno intervalo para garantir que a validação foi processada
+            setTimeout(() => {
+                // Verifica se há erros de validação no formulário
+                const hasErrors = $(form).find('.input-validation-error').length > 0;
+                console.log(hasErrors);
+                // if (form.valid())
+                if (!hasErrors) {
+                    Swal.fire({
+                        title: 'Atenção!',
+                        text: "Você deseja realmente enviar o formulário?",
+                        //icon: 'warning',
+                        showCancelButton: true,
+                        // confirmButtonColor: '#3085d6',
+                        // cancelButtonColor: '#d33',
+                        confirmButtonText: 'Salvar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true,
+                        customClass: {
+                            confirmButton: 'btn btn-primary ms-2',
+                            cancelButton: 'btn btn-outline-secondary',
+                            title: 'swal2-title',
+                            htmlContainer: 'swal2-html-container',
+                        },
+                        buttonsStyling: false //Desabilita os estilos originais do swet alert, para obter do botstrap
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                }
+            }, 150); // 100ms timeout to ensure validation errors are processed
+            return false;
+        }
+    </script>
 }
