@@ -169,6 +169,7 @@
                 multiple>
         </select>
     </div>
+    <button type="button" class="btn btn-secondary mt-2" id="select-all-button">Selecionar Todos</button>
     <button type="submit" class="btn btn-primary mt-5">Enviar Lista de Paises</button>
 </form>
 
@@ -176,7 +177,7 @@
 <div class="mt-5 mb-5">
     <form asp-controller="Home" asp-action="ReceiveSelectedCountries" method="post">
         <div class="form-group mt-5">
-            <label for="multiple-select-clear-field">Select Countries Single Select</label>
+            <label for="single-select-clear-field">Select Countries Single Select</label>
             <select class="form-select"
                     id="single-select-field"
                     data-placeholder="Selecione"
@@ -252,6 +253,15 @@
                 closeOnSelect: true, // Close on select
                 allowClear: true
             });
+
+            $('#select-all-button').click(function () {
+                var $select2 = $('#multiple-select-clear-field');
+                var allOptions = $select2.find('option').map(function () {
+                    return $(this).val();
+                }).get();
+                $select2.val(allOptions).trigger('change');
+            });
         });
+
     </script>
 }
