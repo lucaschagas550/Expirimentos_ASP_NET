@@ -19,9 +19,14 @@
                         <input asp-for="@Model.Nome" class="form-control" />
                         <span asp-validation-for="@Model.Nome" class="text-danger"></span>
                     </div>
-                    <div class="form-group mt-3">
+@*                     <div class="form-group mt-3">
                         <label asp-for="@Model.DataNascimento" class="control-label"></label>
                         <input asp-for="@Model.DataNascimento" type="month" class="form-control" min="1980-01" max="9999-01" />
+                        <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
+                    </div> *@
+                    <div class="form-group mt-3">
+                        <label asp-for="@Model.DataNascimento" class="control-label"></label>
+                        <input value="@Model.DataNascimento.ToString("yyyy-MM")" type="month" class="form-control" />
                         <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
                     </div>
                     <div class="form-group mt-3">
