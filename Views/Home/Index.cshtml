@@ -282,6 +282,28 @@
 </div>
 
 
+<div class="mt-5">
+
+
+    <form asp-controller="Home"
+          asp-action="AnoSelecionado"
+          method="post">
+        <div class="form-group mt-5">
+            <label for="multiple-select-clear-field">Ano</label>
+            <select class="form-select"
+                    asp-items="@ViewBag.Ano"
+                    name="ano">
+                <option value="">Selecione</option>
+            </select>
+        </div>
+        <button type="submit"
+                class="btn btn-primary mt-5">
+            Enviar Ano
+        </button>
+    </form>
+
+</div>
+
 @section Scripts {
     <script>
         $(document).ready(function () {

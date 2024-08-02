@@ -39,7 +39,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 var pessoaCookie = DeserializeJsonToObject<Pessoa>(cookieResponse);
             }
 
-            var pessoas = new List<Pessoa>() { 
+            var pessoas = new List<Pessoa>() {
                 new Pessoa("test 1", "test 1"),
                 new Pessoa("test 2", "test 2"),
                 new Pessoa("test 3", "test 3"),
@@ -48,6 +48,15 @@ namespace TestTabelaResponivaBoostrap.Controllers
             ViewBag.Paises = new SelectList(pessoas,
                 "Nome",
                 "Cidade");
+
+
+            var startYear = 1950;
+            var currentYear = DateTime.Now.Year;
+            ViewBag.Ano = Enumerable.Range(startYear, currentYear - startYear + 1)
+                                  .OrderByDescending(x => x)
+                                  .Select(x => new SelectListItem { Value = x.ToString(), Text = x.ToString() })
+                                  .ToList();
+
 
             CriarViewBag();
 
@@ -177,7 +186,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
         [HttpPost]
         public IActionResult RecebeDiaSemana(EDiasSemana diasSemana)
         {
-            if(diasSemana == 0)
+            if (diasSemana == 0)
             {
                 Console.WriteLine($"Dia semana eh {diasSemana}");
             }
@@ -189,6 +198,13 @@ namespace TestTabelaResponivaBoostrap.Controllers
         public IActionResult Radio(EClassificacao radioId)
         {
             return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult AnoSelecionado(string ano)
+        {
+            Console.WriteLine(ano);
+            return RedirectToAction("Index");
         }
 
         protected string SerializeObjectToJson(object data) =>
