@@ -185,6 +185,12 @@ namespace TestTabelaResponivaBoostrap.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Radio(EClassificacao radioId)
+        {
+            return View("Index");
+        }
+
         protected string SerializeObjectToJson(object data) =>
            JsonSerializer.Serialize(data);
 

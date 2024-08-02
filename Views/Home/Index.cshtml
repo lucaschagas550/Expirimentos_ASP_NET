@@ -1,4 +1,5 @@
-﻿@{
+﻿@using TestTabelaResponivaBoostrap.Models.Enums
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -223,6 +224,63 @@
         </div>
     </div>
 </div>
+
+
+@{
+    var radioSelected = 2;
+}
+
+<div class="mt-5">
+
+    <form asp-controller="Home" asp-action="Radio" method="post">
+
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="radioId"
+                   id="inlineRadio1"
+                   value="@EClassificacao.Operacionais"
+            @(radioSelected == (int)EClassificacao.Operacionais ? "checked" : "")>
+            <label class="form-check-label"
+                   for="inlineRadio1">
+                Operacionais
+            </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="radioId"
+                   id="inlineRadio2"
+                   value="@EClassificacao.AdministrativosTecnicos"
+            @(radioSelected == (int)EClassificacao.AdministrativosTecnicos ? "checked" : "")>
+            <label class="form-check-label"
+                   for="inlineRadio2">
+                Administrativos / Tecnicos
+            </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="radio"
+                   name="radioId"
+                   id="inlineRadio3"
+                   value="@EClassificacao.Universitarios"
+            @(radioSelected == (int)EClassificacao.Universitarios ? "checked" : "")>
+            <label class="form-check-label"
+                   for="inlineRadio3">
+                Universitarios
+            </label>
+        </div>
+
+        <button class="btn btn-primary"
+                type="submit">
+            Enviar Radio
+        </button>
+    </form>
+</div>
+
 
 @section Scripts {
     <script>
