@@ -5,82 +5,98 @@
 
 @foreach (var item1 in Model.ListaPessoa1)
 {
-    <div class="accordion"
-         id=@Html.Raw("pessoa1" + item1.Id)>
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target=@Html.Raw("#collapseOne" + item1.Id)
-                        aria-expanded="false"
-                        aria-controls=@Html.Raw("collapseOne" + item1.Id)>
-                    @item1.Nome - @item1.Cidade
-                </button>
-            </h2>
-            <div id=@Html.Raw("collapseOne" + item1.Id)
-                 class="accordion-collapse collapse"
-                 data-bs-parent=@Html.Raw("#pessoa1" + item1.Id)>
-                <div class="accordion-body">
-                    <form method="post" asp-action="Create">
+    <div class="row">
+        <div class=" col-md-8">
 
-                        <input type="hidden"
-                               name="primeiroAccordionId"
-                               value=@Html.Raw("pessoa1"+ item1.Id) />
-
-                        <strong>Detalhes da pessoa:</strong> Nome: @item1.Nome, Cidade: @item1.Cidade
-                        <button type="submit"
-                                class="btn btn-primary mt-2">
-                            Enviar Primeiro Accordion
+            <div class="accordion"
+                 id=@Html.Raw("pessoa1" + item1.Id)>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target=@Html.Raw("#collapseOne" + item1.Id)
+                                aria-expanded="false"
+                                aria-controls=@Html.Raw("collapseOne" + item1.Id)>
+                            @item1.Nome - @item1.Cidade
                         </button>
+                    </h2>
+                    <div id=@Html.Raw("collapseOne" + item1.Id)
+                         class="accordion-collapse collapse"
+                         data-bs-parent=@Html.Raw("#pessoa1" + item1.Id)>
+                        <div class="accordion-body">
+                            <form method="post" asp-action="Create">
 
-                    </form>
+                                <input type="hidden"
+                                       name="primeiroAccordionId"
+                                       value=@Html.Raw("pessoa1"+ item1.Id) />
 
-                    <!-- Início do segundo accordion -->
-                    @foreach (var item2 in Model.ListaPessoa2)
-                    {
-                        <div class="accordion mt-3"
-                             id=@Html.Raw("pessoa2" + item2.Id)>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target=@Html.Raw("#collapseTwo" + item2.Id)
-                                            aria-expanded="false"
-                                            aria-controls=@Html.Raw("collapseTwo" + item2.Id)>
-                                        @item2.Nome - @item2.Cidade
-                                    </button>
-                                </h2>
-                                <div id=@Html.Raw("collapseTwo" + item2.Id)
-                                     class="accordion-collapse collapse"
-                                     data-bs-parent=@Html.Raw("#pessoa2" + item2.Id)>
-                                    <div class="accordion-body">
-                                        <form method="post" asp-action="Create">
+                                <strong>Detalhes da pessoa:</strong> Nome: @item1.Nome, Cidade: @item1.Cidade
+                                <button type="submit"
+                                        class="btn btn-primary mt-2">
+                                    Enviar Primeiro Accordion
+                                </button>
 
-                                            <input type="hidden"
-                                                   name="primeiroAccordionId"
-                                                   value=@Html.Raw("pessoa1"+ item1.Id) />
-                                            <input type="hidden"
-                                                   name="segundoAccordionId"
-                                                   value=@Html.Raw("pessoa2"+ item2.Id) />
+                            </form>
 
-                                            <strong>Detalhes da pessoa:</strong> Nome: @item2.Nome, Cidade: @item2.Cidade
-
-                                            <button type="submit"
-                                                    class="btn btn-secondary mt-2">
-                                                Enviar Segundo Accordion
+                            <!-- Início do segundo accordion -->
+                            @foreach (var item2 in Model.ListaPessoa2)
+                            {
+                                <div class="accordion mt-3"
+                                     id=@Html.Raw("pessoa2" + item2.Id)>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed"
+                                                    type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target=@Html.Raw("#collapseTwo" + item2.Id)
+                                                    aria-expanded="false"
+                                                    aria-controls=@Html.Raw("collapseTwo" + item2.Id)>
+                                                @item2.Nome - @item2.Cidade
                                             </button>
-                                        </form>
+
+                                        </h2>
+                                        <div id=@Html.Raw("collapseTwo" + item2.Id)
+                                             class="accordion-collapse collapse"
+                                             data-bs-parent=@Html.Raw("#pessoa2" + item2.Id)>
+                                            <div class="accordion-body">
+                                                <form method="post" asp-action="Create">
+
+                                                    <input type="hidden"
+                                                           name="primeiroAccordionId"
+                                                           value=@Html.Raw("pessoa1"+ item1.Id) />
+                                                    <input type="hidden"
+                                                           name="segundoAccordionId"
+                                                           value=@Html.Raw("pessoa2"+ item2.Id) />
+
+                                                    <strong>Detalhes da pessoa:</strong> Nome: @item2.Nome, Cidade: @item2.Cidade
+
+                                                    <button type="submit"
+                                                            class="btn btn-secondary mt-2">
+                                                        Enviar Segundo Accordion
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    }
-                    <!-- Fim do segundo accordion -->
+                            }
+                            <!-- Fim do segundo accordion -->
 
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-4 mt-2">
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target=@Html.Raw("#exampleModal" + item1.Id)>
+                <i class="bi bi-pencil-square"></i><!-- Ícone de informação -->
+                Editar
+            </button>
         </div>
     </div>
 }
