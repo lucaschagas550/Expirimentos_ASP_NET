@@ -115,11 +115,15 @@
     <tbody>
         <tr>
             <td>
-                <button class="btn btn-icon" data-bs-toggle="collapse" data-bs-target="#detalhes1">
-                    <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 3.5a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 .5-.5z" />
-                    </svg>
-                </button>
+                <i class="fs-5 bi bi-arrow-down-circle"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#detalhes1"
+                   style="color:#17629E; cursor:pointer;"></i>
+                @*                 <button class="btn btn-icon" data-bs-toggle="collapse" data-bs-target="#detalhes1">
+                <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3.5a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 .5-.5z" />
+                </svg>
+                </button> *@
             </td>
             <td>Informação 1</td>
             <td>Informação 2</td>
@@ -353,6 +357,18 @@
                     return $(this).val();
                 }).get();
                 $select2.val(allOptions).trigger('change');
+            });
+
+            //Altera icone da seta ao clicar, na tabela com outra tabela dentro
+            $('.bi[data-bs-toggle="collapse"]').each(function () {
+                var iconElement = $(this);
+                var collapseTargetId = iconElement.data('bs-target');
+
+                $(collapseTargetId).on('shown.bs.collapse', function () {
+                    iconElement.removeClass('bi-arrow-down-circle').addClass('bi-arrow-up-circle');
+                }).on('hidden.bs.collapse', function () {
+                    iconElement.removeClass('bi-arrow-up-circle').addClass('bi-arrow-down-circle');
+                });
             });
         });
 
