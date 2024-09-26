@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Aluno>
+@{
+    Layout = null;
+}
+
+<!--CSS Criado personalizado o bootstrap nao consegue ser obtido pelo rotativa-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/pdf.css" asp-append-version="true" />
+    <!-- Adicione outros links de CSS ou meta tags conforme necessário -->
+</head>
+<body>
+
+    <header>
+        Teste 123
+    </header>
+
+    <div class="">
+        <table class="">
+            <thead>
+                <tr class="tabela-cabecalho">
+                    <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                    <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.Avaliacao)</th>
+                    <th>@Html.DisplayNameFor(model => model.Ativo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Saldo)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.DataNascimento.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Email</td>
+                        <td>@item.Avaliacao</td>
+                        <td>
+                            @{
+                                var ativo = item.Ativo ? "Sim" : "Não";
+                            }
+                            @ativo
+                        </td>
+                        <td>@item.Saldo.ToString("C2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

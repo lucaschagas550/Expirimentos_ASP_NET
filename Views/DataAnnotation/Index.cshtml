@@ -38,12 +38,24 @@
                     <td class="money">@Html.DisplayFor(modelItem => item.Saldo)</td>
                     <td>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@Html.Raw("#editar" + item.Id)">Editar</button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir"+ item.Id)">Excluir</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir" + item.Id)">Excluir</button>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-end">
+        <form asp-action="GerarPDF"
+              method="post">
+            <button class="btn btn-primary">
+                Gerar PDF
+            </button>
+        </form>
+    </div>
+
 </div>
 
 <!--Os formularios devem estar sempre na raiz do html, nunca dentro de algo, que pode ser que as validacoes nao funcionem-->

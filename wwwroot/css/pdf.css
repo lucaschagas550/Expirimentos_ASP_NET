@@ -1,0 +1,81 @@
+﻿/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Estilo do cabeçalho */
+header {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Container para a tabela com rolagem horizontal em telas pequenas */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+/* Estilo da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Garante que a tabela não fique muito pequena */
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    table-layout: auto; /* Permite que as colunas se ajustem automaticamente */
+}
+
+/* Estilo dos cabeçalhos da tabela */
+.tabela-cabecalho th {
+    background-color: #1e90ff; /* Azul Dodger */
+    color: #fff;
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 1em;
+    border-bottom: 2px solid #ddd;
+    white-space: normal; /* Permite quebra de linha no cabeçalho */
+    word-wrap: break-word; /* Quebra palavras longas */
+}
+
+/* Estilo das células da tabela */
+table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95em;
+    white-space: normal; /* Permite quebra de linha no conteúdo */
+    word-wrap: break-word; /* Quebra palavras longas */
+    /* Alternativamente, você pode usar word-break:
+       word-break: break-word; */
+}
+
+/* Linhas alternadas para melhor legibilidade */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+
+/* Estilo para a coluna de saldo */
+.money {
+    text-align: right;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #2e8b57; /* Verde Sea */
+    white-space: normal; /* Permite quebra de linha na coluna de saldo, se necessário */
+}

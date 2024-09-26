@@ -1,6 +1,7 @@
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Rotativa.AspNetCore;
 using SmartBreadcrumbs.Extensions;
 using System.Globalization;
 using System.Reflection;
@@ -86,6 +87,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseRotativa();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

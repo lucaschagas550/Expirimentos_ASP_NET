@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.InkML;
 using Microsoft.AspNetCore.Mvc;
+using Rotativa.AspNetCore;
 using TestTabelaResponivaBoostrap.Models;
 
 namespace TestTabelaResponivaBoostrap.Controllers
@@ -64,6 +65,21 @@ namespace TestTabelaResponivaBoostrap.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GerarPDF()
+        {
+            var alunos = CriarListaAlunos();
+
+            return new ViewAsPdf("pdf", alunos)
+            {
+                FileName = "Alunos.pdf",
+                PageSize = Rotativa.AspNetCore.Options.Size.A4,
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Portrait,
+                PageMargins = new Rotativa.AspNetCore.Options.Margins { Top = 10, Bottom = 10, Left = 10, Right = 10 }
+            };
+        }
+
         private static List<Aluno> CriarListaAlunos()
         {
             return new List<Aluno>
@@ -117,7 +133,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 Id = 5,
                 Nome = "Pedro Albuquerque",
                 DataNascimento = new DateTime(1998, 7, 5),
-                Email = "pedro.albuquerque@example.com",
+                Email = "pedro.albuquerque.teste915152@example.com",
                 EmailConfirmacao = "pedro.albuquerque@example.com",
                 Avaliacao = 2,
                 Ativo = true,
