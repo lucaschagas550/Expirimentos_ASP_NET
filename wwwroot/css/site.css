@@ -77,3 +77,35 @@ body {
 .swal2-html-container {
     text-align: left !important; /* Alinhar o texto à esquerda */
 }
+
+
+
+
+.file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.file-upload-input {
+    display: none; /* Oculta o input padrão */
+}
+
+.file-upload-label {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do ícone */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    .file-upload-label:hover {
+        background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+    }
+
+#file-name {
+    margin-left: 10px;
+    font-family: Arial, sans-serif;
+    vertical-align: middle;
+}

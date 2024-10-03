@@ -41,6 +41,19 @@
 
 <div>
 
+    <!--Arquivo mudando o icone do input-->
+    <form asp-action="File" enctype="multipart/form-data" method="post">
+
+        <div class="file-upload-wrapper">
+            <input type="file" id="Arquivo1" class="file-upload-input" name="file" />
+            <label for="Arquivo1" class="file-upload-label">
+                <i class="fas fa-upload"></i> <!-- Ícone de upload -->
+            </label>
+            <span id="file-name">Nenhum arquivo selecionado</span>
+        </div>
+    </form>
+
+
     <form asp-action="File" enctype="multipart/form-data" method="post">
 
         <label for="Arquivo" class="form-label">Escolha um arquivo</label>
@@ -341,6 +354,12 @@
                 }).get();
                 $select2.val(allOptions).trigger('change');
             });
+        });
+
+
+        document.getElementById('Arquivo1').addEventListener('change', function () {
+            var fileName = this.files[0] ? this.files[0].name : 'Nenhum arquivo selecionado';
+            document.getElementById('file-name').textContent = fileName;
         });
 
     </script>
