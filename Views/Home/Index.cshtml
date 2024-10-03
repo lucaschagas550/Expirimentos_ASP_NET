@@ -1,6 +1,11 @@
 ﻿@using TestTabelaResponivaBoostrap.Models.Enums
 @{
     ViewData["Title"] = "Home Page";
+    var selecionados = new List<string>
+    {
+        "test 1",
+        "test 2"
+    };
 }
 
 <div class="text-center">
@@ -182,6 +187,7 @@
         <label for="multiple-select-clear-field">Select Countries Multi Select</label>
         <select class="form-select"
                 id="multiple-select-clear-field"
+                asp-for="@selecionados"
                 asp-items="@ViewBag.Paises"
                 name="selectedCountries"
                 multiple>
