@@ -47,15 +47,28 @@
 <div>
 
     <!--Arquivo mudando o icone do input-->
-    <form asp-action="File" enctype="multipart/form-data" method="post">
+    <form asp-action="File" enctype="multipart/form-data" method="post" class="mb-5">
 
-        <div class="file-upload-wrapper">
+        <div class="row">
             <input type="file" id="Arquivo1" class="file-upload-input" name="file" />
-            <label for="Arquivo1" class="file-upload-label">
+            <label for="Arquivo1" class="col-md-1 file-upload-label d-flex justify-content-center align-items-center">
                 <i class="fas fa-upload"></i> <!-- Ícone de upload -->
             </label>
-            <span id="file-name">Nenhum arquivo selecionado</span>
+            <div class="col-md-6">
+                <span id="file-name" class="form-control"> Nenhum arquivo selecionado </span>
+            </div>
+
+            <div class="col-md-2">
+                <!-- Botão para remover o arquivo selecionado -->
+                <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" style="display: none;">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
         </div>
+
+        <button type="submit">
+            Enviar Teste 1
+        </button>
     </form>
 
 
@@ -382,6 +395,25 @@
         document.getElementById('Arquivo1').addEventListener('change', function () {
             var fileName = this.files[0] ? this.files[0].name : 'Nenhum arquivo selecionado';
             document.getElementById('file-name').textContent = fileName;
+        });
+
+        // Event listener para input de arquivo usando jQuery
+        $('#Arquivo1').on('change', function () {
+            var fileName = this.files[0] ? this.files[0].name : 'Nenhum arquivo selecionado';
+            $('#file-name').text(fileName);
+
+            if (this.files.length > 0) {
+                $('#remove-file-button').show(); // Exibe o botão de remoção
+            } else {
+                $('#remove-file-button').hide(); // Oculta o botão se nenhum arquivo estiver selecionado
+            }
+        });
+
+        // Event listener para o botão de remoção
+        $('#remove-file-button').on('click', function () {
+            $('#Arquivo1').val(''); // Limpa o valor do input de arquivo
+            $('#file-name').text('Nenhum arquivo selecionado'); // Reseta o texto do nome do arquivo
+            $(this).hide(); // Oculta o botão de remoção
         });
 
     </script>
