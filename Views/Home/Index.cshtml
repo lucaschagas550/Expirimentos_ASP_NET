@@ -60,7 +60,7 @@
 
             <div class="col-md-2">
                 <!-- Botão para remover o arquivo selecionado -->
-                <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" style="display: none;">
+                <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" hidden="hidden">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </div>
@@ -403,9 +403,9 @@
             $('#file-name').text(fileName);
 
             if (this.files.length > 0) {
-                $('#remove-file-button').show(); // Exibe o botão de remoção
+                $('#remove-file-button').removeAttr("hidden").show(); // Exibe o botão de remoção
             } else {
-                $('#remove-file-button').hide(); // Oculta o botão se nenhum arquivo estiver selecionado
+                $('#remove-file-button').attr("hidden", "hidden"); // Oculta o botão se nenhum arquivo estiver selecionado
             }
         });
 
