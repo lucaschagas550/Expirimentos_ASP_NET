@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!--Editor de Texto Estilos CSS-->
-    <link rel="stylesheet" href="~/lib/summernote/summernote-bs5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css">
+    @* <link rel="stylesheet" href="~/lib/summernote/summernote-lite.min.css"> *@
     @* <link href="summernote-bs5.css" rel="stylesheet"> *@
 </head>
 
@@ -172,9 +173,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--Editor de Texto JS-->
-    <script src="~/lib/summernote/summernote-bs5.min.js"></script> 
-
+    @* <script src="~/lib/summernote/summernote.min.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
     <!--Editor de Texto Lingua PT-BR JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-pt-BR.min.js"></script>
     <script src="~/lib/summernote/lang/summernote-pt-BR.min.js"></script> 
     
     @await RenderSectionAsync("Scripts", required: false)
