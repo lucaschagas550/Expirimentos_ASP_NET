@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!--Editor de Texto Estilos CSS-->
+    <link rel="stylesheet" href="~/lib/summernote/summernote-bs5.min.css">
+    @* <link href="summernote-bs5.css" rel="stylesheet"> *@
 </head>
 
 @{
@@ -86,6 +90,14 @@
                             </a>
                         </li>
 
+
+                        <li class="nav-item active">
+                            <a class="nav-link text-primary" asp-area="" asp-controller="EditorText" asp-action="Index">
+                                Editor Text
+                            </a>
+                        </li>
+
+                        
                     </ul>
                 </div>
 
@@ -159,6 +171,12 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!--Editor de Texto JS-->
+    <script src="~/lib/summernote/summernote-bs5.min.js"></script> 
+
+    <!--Editor de Texto Lingua PT-BR JS-->
+    <script src="~/lib/summernote/lang/summernote-pt-BR.min.js"></script> 
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

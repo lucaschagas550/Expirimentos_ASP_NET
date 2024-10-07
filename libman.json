@@ -17,6 +17,11 @@
         "jquery.mask.min.js",
         "jquery.mask.js"
       ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "summernote@0.8.20",
+      "destination": "wwwroot/lib/summernote/"
     }
   ]
 }

@@ -1,0 +1,45 @@
+﻿@model EditorTexto;
+
+@{
+    ViewData["Title"] = "Editor Text";
+}
+
+
+<div>
+
+    <h1>Editor de Texto</h1>
+
+    <form asp-action="Create" method="post">
+
+        <div>
+            <textarea id="summernote" asp-for="@Model.Content"></textarea>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">
+            Submit Text
+        </button>
+    </form>
+
+</div>
+
+<div class="mt-5">
+    @Model.Content
+</div>
+
+<div class="mt-5">
+    @Html.Raw(Model.Content)
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                lang: "pt-BR",
+                minHeight: 300
+            });
+        });
+    </script>
+}
