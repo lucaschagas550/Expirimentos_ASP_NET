@@ -1,4 +1,6 @@
 ﻿@using TestTabelaResponivaBoostrap.Models.Enums
+@model FormFiles
+
 @{
     ViewData["Title"] = "Home Page";
     var selecionados = new List<string>
@@ -46,8 +48,33 @@
 
 <div>
 
+    <form asp-action="FormFiles" enctype="multipart/form-data" method="post" class="mb-5">
+
+        <div class="row">
+            <input type="file" id="Arquivo1" class="file-upload-input" asp-for="@Model.Arquivos.FormFiles" multiple />
+            <label for="Arquivo1" class="col-md-1 file-upload-label d-flex justify-content-center align-items-center">
+                <i class="fas fa-upload"></i> <!-- Ícone de upload -->
+            </label>
+            <div class="col-md-6">
+                <label id="file-name" for="Arquivo1" class="form-control"> Nenhum arquivo selecionado </label>
+            </div>
+            <span asp-validation-for="@Model.Arquivos.FormFiles" class="text-danger"></span>
+
+            <div class="col-md-2">
+                <!-- Botão para remover o arquivo selecionado -->
+                <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" hidden="hidden">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <button type="submit">
+            Enviar Teste 1
+        </button>
+    </form>
+
     <!--Arquivo mudando o icone do input-->
-    <form asp-action="File" enctype="multipart/form-data" method="post" class="mb-5">
+@*     <form asp-action="File" enctype="multipart/form-data" method="post" class="mb-5">
 
         <div class="row">
             <input type="file" id="Arquivo1" class="file-upload-input" name="file" />
@@ -69,7 +96,7 @@
         <button type="submit">
             Enviar Teste 1
         </button>
-    </form>
+    </form> *@
 
 
     <form asp-action="File" enctype="multipart/form-data" method="post">
@@ -341,6 +368,9 @@
 </div>
 
 @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
     <script>
         $(document).ready(function () {
             $.fn.modal.Constructor.prototype.enforceFocus = function () { };
@@ -399,10 +429,12 @@
 
         // Event listener para input de arquivo usando jQuery
         $('#Arquivo1').on('change', function () {
-            var fileName = this.files[0] ? this.files[0].name : 'Nenhum arquivo selecionado';
+            var fileCount = this.files.length; // Número de arquivos selecionados
+            var fileName = fileCount > 1 ? fileCount + ' arquivos selecionados' : (fileCount === 1 ? this.files[0].name : 'Nenhum arquivo selecionado');
+
             $('#file-name').text(fileName);
 
-            if (this.files.length > 0) {
+            if (fileCount > 0) {
                 $('#remove-file-button').removeAttr("hidden").show(); // Exibe o botão de remoção
             } else {
                 $('#remove-file-button').attr("hidden", "hidden"); // Oculta o botão se nenhum arquivo estiver selecionado
