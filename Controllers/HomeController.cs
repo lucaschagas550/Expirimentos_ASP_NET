@@ -66,6 +66,11 @@ namespace TestTabelaResponivaBoostrap.Controllers
         [HttpPost]
         public async Task<IActionResult> FormFiles(Files arquivos)//Arquivos.FormFiles o asp-for vai enviar, entao nome na controller tem que ser arquivos
         {
+            foreach(var item in arquivos.FormFiles)
+            {
+                Console.WriteLine("entrei");
+            }
+
             return View("Success"); 
         }
 

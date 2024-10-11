@@ -51,51 +51,68 @@
     <form asp-action="FormFiles" enctype="multipart/form-data" method="post" class="mb-5">
 
         <div class="row">
-            <input type="file" id="Arquivo1" class="file-upload-input" asp-for="@Model.Arquivos.FormFiles" multiple />
-            <label for="Arquivo1" class="col-md-1 file-upload-label d-flex justify-content-center align-items-center">
-                <i class="fas fa-upload"></i> <!-- Ícone de upload -->
-            </label>
-            <div class="col-md-6">
-                <label id="file-name" for="Arquivo1" class="form-control"> Nenhum arquivo selecionado </label>
-            </div>
-            <span asp-validation-for="@Model.Arquivos.FormFiles" class="text-danger"></span>
+            <div class="input-group">
+                <!-- Campo de upload de arquivo -->
+                <input type="file"
+                       id="Arquivo1"
+                       class="file-upload-input"
+                       asp-for="@Model.Arquivos.FormFiles"
+                       multiple />
 
-            <div class="col-md-2">
+                <!-- Ícone de upload -->
+                <label for="Arquivo1"
+                       class="input-group-text file-upload-label d-flex justify-content-center align-items-center">
+                    <i class="fas fa-upload"></i>
+                </label>
+
+                <!-- Nome do arquivo selecionado -->
+                <label id="file-name"
+                       for="Arquivo1"
+                       class="form-control mb-0">
+                    Nenhum arquivo selecionado
+                </label>
+
                 <!-- Botão para remover o arquivo selecionado -->
-                <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" hidden="hidden">
+                <button type="button" id="remove-file-button" class="btn btn-danger" title="Remover arquivo" hidden="hidden">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </div>
         </div>
+        <span asp-validation-for="Arquivos.FormFiles" class="text-danger"></span>
 
-        <button type="submit">
-            Enviar Teste 1
-        </button>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-primary mt-3">
+                Enviar Teste 1
+            </button>
+        </div>
+
     </form>
 
+
+
     <!--Arquivo mudando o icone do input-->
-@*     <form asp-action="File" enctype="multipart/form-data" method="post" class="mb-5">
+    @*     <form asp-action="File" enctype="multipart/form-data" method="post" class="mb-5">
 
-        <div class="row">
-            <input type="file" id="Arquivo1" class="file-upload-input" name="file" />
-            <label for="Arquivo1" class="col-md-1 file-upload-label d-flex justify-content-center align-items-center">
-                <i class="fas fa-upload"></i> <!-- Ícone de upload -->
-            </label>
-            <div class="col-md-6">
-                <label id="file-name" for="Arquivo1" class="form-control"> Nenhum arquivo selecionado </label>
-            </div>
+    <div class="row">
+    <input type="file" id="Arquivo1" class="file-upload-input" name="file" />
+    <label for="Arquivo1" class="col-md-1 file-upload-label d-flex justify-content-center align-items-center">
+    <i class="fas fa-upload"></i> <!-- Ícone de upload -->
+    </label>
+    <div class="col-md-6">
+    <label id="file-name" for="Arquivo1" class="form-control"> Nenhum arquivo selecionado </label>
+    </div>
 
-            <div class="col-md-2">
-                <!-- Botão para remover o arquivo selecionado -->
-                <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" hidden="hidden">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
-        </div>
+    <div class="col-md-2">
+    <!-- Botão para remover o arquivo selecionado -->
+    <button type="button" id="remove-file-button" class="btn btn-danger ms-2" title="Remover arquivo" hidden="hidden">
+    <i class="fas fa-trash-alt"></i>
+    </button>
+    </div>
+    </div>
 
-        <button type="submit">
-            Enviar Teste 1
-        </button>
+    <button type="submit">
+    Enviar Teste 1
+    </button>
     </form> *@
 
 
