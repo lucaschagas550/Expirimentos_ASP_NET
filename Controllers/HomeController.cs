@@ -44,9 +44,13 @@ namespace TestTabelaResponivaBoostrap.Controllers
                 new Pessoa("test 2", "Varzea paulista", "Brasil"),
                 new Pessoa("test 3", "Sorocaba", "Argentina"),
             };
-            var groupedPessoas = pessoas.GroupBy(p => p.Pais).ToDictionary(g => g.Key, g => g.ToList());
+            var groupedPessoas = pessoas
+                .GroupBy(p => p.Pais)
+                .ToDictionary(g => g.Key, g => g.OrderByDescending(p => p.Cidade).ToList());
 
             ViewBag.PaisesAgrupado = groupedPessoas;
+            ViewBag.SelectedCountry = "test 2"; // Exemplo de valor selecionado
+
             ViewBag.Paises = new SelectList(pessoas,
                 "Nome",
                 "Cidade");

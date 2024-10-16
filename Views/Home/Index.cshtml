@@ -398,7 +398,19 @@
                     <optgroup label="@group.Key">
                         @foreach (var pessoa in group.Value)
                         {
-                            <option value="@pessoa.Nome">@pessoa.Cidade</option>
+                            var isSelected = ViewBag.SelectedCountry == pessoa.Nome ? true : false;
+                            if (isSelected)
+                            {
+                                <option value="@pessoa.Nome" selected>
+                                    @pessoa.Cidade
+                                </option>
+                            }
+                            else
+                            {
+                                <option value="@pessoa.Nome">
+                                    @pessoa.Cidade
+                                </option>
+                            }
                         }
                     </optgroup>
                 }
@@ -409,6 +421,8 @@
             Enviar Select List Agrupado
         </button>
     </form>
+
+
 
 </div>
 
