@@ -382,6 +382,34 @@
         </button>
     </form>
 
+
+    <form asp-controller="Home"
+          asp-action="ReceiveSelectedCountrie"
+          method="post">
+        <div class="form-group mt-5">
+            <label for="multiple-select-clear-field">
+                Pais
+            </label>
+            <select class="form-select"
+                    name="selectedCountries">
+                <option value="">Selecione</option>
+                @foreach (var group in ViewBag.PaisesAgrupado)
+                {
+                    <optgroup label="@group.Key">
+                        @foreach (var pessoa in group.Value)
+                        {
+                            <option value="@pessoa.Nome">@pessoa.Cidade</option>
+                        }
+                    </optgroup>
+                }
+            </select>
+        </div>
+        <button type="submit"
+                class="btn btn-primary mt-5">
+            Enviar Select List Agrupado
+        </button>
+    </form>
+
 </div>
 
 @section Scripts {

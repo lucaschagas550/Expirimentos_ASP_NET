@@ -40,11 +40,13 @@ namespace TestTabelaResponivaBoostrap.Controllers
             }
 
             var pessoas = new List<Pessoa>() {
-                new Pessoa("test 1", "test 1"),
-                new Pessoa("test 2", "test 2"),
-                new Pessoa("test 3", "test 3"),
+                new Pessoa("test 1", "Jundiai", "Brasil"),
+                new Pessoa("test 2", "Varzea paulista", "Brasil"),
+                new Pessoa("test 3", "Sorocaba", "Argentina"),
             };
+            var groupedPessoas = pessoas.GroupBy(p => p.Pais).ToDictionary(g => g.Key, g => g.ToList());
 
+            ViewBag.PaisesAgrupado = groupedPessoas;
             ViewBag.Paises = new SelectList(pessoas,
                 "Nome",
                 "Cidade");
@@ -179,6 +181,13 @@ namespace TestTabelaResponivaBoostrap.Controllers
             }
 
             // Return a view or a JSON response
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ReceiveSelectedCountrie(string selectedCountries)
+        {
+            Console.WriteLine(selectedCountries);
             return View();
         }
 
