@@ -95,11 +95,11 @@ namespace TestTabelaResponivaBoostrap.Controllers
             // Converter os bytes para uma string Base64
             string base64String = Convert.ToBase64String(fileBytes);
 
-            // Agora, 'base64String' contém a representação Base64 do arquivo
-            // Faça o que quiser com 'base64String', como salvá-lo no banco de dados ou usá-lo em outro lugar.
+            // Agora, 'base64String' contï¿½m a representaï¿½ï¿½o Base64 do arquivo
+            // Faï¿½a o que quiser com 'base64String', como salvï¿½-lo no banco de dados ou usï¿½-lo em outro lugar.
 
             return View("Success"); // Retorne uma view de sucesso ou outra resposta apropriada
-            return View(fileModel);
+            // return View(fileModel);
         }
 
         [HttpPost]
@@ -129,7 +129,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
             //Instalar a lib ClosedXML
             // Simulando uma lista de dados para exportar
             var data = new List<dynamic> {
-                new { Name = "João", Age = 29, Email = "joao@example.com" },
+                new { Name = "JoÃ£o", Age = 29, Email = "joao@example.com" },
                 new { Name = "Maria", Age = 34, Email = "maria@example.com" }
             };
 
