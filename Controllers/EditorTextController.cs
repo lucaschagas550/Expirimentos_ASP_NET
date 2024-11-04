@@ -6,7 +6,7 @@ namespace TestTabelaResponivaBoostrap.Controllers
 {
     public class EditorTextController : MainController
     {
-        public static EditorTexto textoPublic = new EditorTexto();
+        public static EditorTexto textoPublic = new EditorTexto("<p><b>Teste</b></p>");
 
         public EditorTextController()
         {
