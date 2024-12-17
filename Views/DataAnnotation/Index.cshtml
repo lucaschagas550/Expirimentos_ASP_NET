@@ -37,8 +37,17 @@
                     <td>@Html.DisplayFor(modelItem => item.Ativo)</td>
                     <td class="money">@Html.DisplayFor(modelItem => item.Saldo)</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@Html.Raw("#editar" + item.Id)">Editar</button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir" + item.Id)">Excluir</button>
+                        <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-tt="tooltip" title="Olá Mundo!"
+                                data-bs-target="@Html.Raw("#editar" + item.Id)">
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@Html.Raw("#excluir" + item.Id)"
+                                data-tt="tooltip" title="Excluir">
+                            Excluir
+                        </button>
                     </td>
                 </tr>
             }
@@ -71,6 +80,25 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    @{
+        // Criação do Dictionary para mapear Avaliação -> Script
+        var scriptMappings = new Dictionary<int, string>
+        {
+            { 4, "~/js/test.js" },
+            { 5, "~/js/anotherTest.js" },
+            { 6, "~/js/yetAnotherTest.js" }
+        };
+
+        // Pegue o valor da avaliação
+        var value = Model.First().Avaliacao;
+
+        // Verifique se há um script correspondente
+        if (scriptMappings.TryGetValue(value, out var scriptPath))
+        {
+            <script src="@Url.Content(scriptPath)"></script>
+        }
     }
 
     <script>
@@ -115,5 +143,15 @@
             }, 150); // 100ms timeout to ensure validation errors are processed
             return false;
         }
+    </script>
+
+    <script>
+
+        $(function () {
+            // = document.ready
+            console.log('test tooltip');
+            $("[data-tt=tooltip]").tooltip();
+        });
+        
     </script>
 }
